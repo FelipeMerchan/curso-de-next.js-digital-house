@@ -1,6 +1,5 @@
+import { UserTabs } from "@/components/users/UserTabs";
 import Link from "next/link";
-
-import { Message } from "@components/messages/Message";
 
 export default function UserPage({ params }: { params: { username: string } }) {
   const user = {
@@ -56,17 +55,7 @@ export default function UserPage({ params }: { params: { username: string } }) {
           </span>
         </div>
       </section>
-      <div className="flex justify-evenly mb-4">
-        <span className="cursor-pointer border-b-2 border-blue-400">
-          Mensajes
-        </span>
-        <span className="cursor-pointer">Respuestas</span>
-      </div>
-      <div>
-        {user.messages.map((message, index) => (
-          <Message key={index} message={message} />
-        ))}
-      </div>
+      <UserTabs messages={user.messages} replies={[]} />
     </main>
   );
 }
